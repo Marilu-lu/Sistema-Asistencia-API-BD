@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Registro de asistencia</title>
+
+</head>
+
+
+<body>
+
+
+<h1>
+    Registro de asistencia diaria
+</h1>
+
+
+<form method="GET">
+
+    <label>
+        Seleccione una fecha:
+    </label>
+
+    <input
+        type="date"
+        name="fecha"
+        value="{{ fecha|default:'' }}"
+    >
+
+    <button type="submit">
+        Consultar
+    </button>
+
+</form>
+
+
+<br>
+
+
+{% if fecha %}
+
+
+<h2>
+    Asistencia del día: {{ fecha }}
+</h2>
+{% if messages %}
+
+    {% for message in messages %}
+
+        <p style="color: green; font-weight: bold;">
+            {{ message }}
+        </p>
+
+    {% endfor %}
+
+{% endif %}
+
+{% if error %}
+
+<p style="color:red; font-weight:bold;">
+    {{ error }}
+</p>
+
+{% endif %}
+
+
+
+<form method="POST">
+
+    {% csrf_token %}
+
+
+    <input
+        type="hidden"
+        name="fecha"
+        value="{{ fecha }}"
+    >
+
+
+
+<table border="1">
+
+
+<thead>
+
+<tr>
+
+    <th>Trabajador</th>
+
+    <th>Cargo</th>
+
+    <th>Grupo</th>
+
+    <th>Turno</th>
+
+    <th>Estado</th>
+
+    <th>Hora entrada</th>
+
+    <th>Hora salida</th>
+
+    <th>Observación</th>
+
+</tr>
+
+</thead>
+
+
+
+<tbody>
+
+
+{% for registro in programaciones %}
+
+
+<tr>
+
+
+<td>
+
+    {{ registro.trabajador.nombre }}
+
+</td>
+
+
+
+<td>
+
+    {{ registro.trabajador.cargo }}
+
+</td>
+
+
+
+<td>
+
+    {{ registro.trabajador.grupo }}
+
+</td>
+
+
+
+<td>
+
+    {{ registro.turno.codigo }}
+
+</td>
+
+
+
+<td>
+
+
+<select name="estado_{{ registro.trabajador.id }}">
+
+
+
+{% if registro.asistencia %}
+
+
+<option
+value="Presente"
+{% if registro.asistencia.estado == "Presente" %}selected{% endif %}
+>
+Presente
+</option>
+
+
+<option
+value="Ausente"
+{% if registro.asistencia.estado == "Ausente" %}selected{% endif %}
+>
+Ausente
+</option>
+
+
+<option
+value="Licencia"
+{% if registro.asistencia.estado == "Licencia" %}selected{% endif %}
+>
+Licencia
+</option>
+
+
+<option
+value="Permiso"
+{% if registro.asistencia.estado == "Permiso" %}selected{% endif %}
+>
+Permiso
+</option>
+
+
+
+{% else %}
+
+
+<option value="" selected>
+Seleccionar estado
+</option>
+
+
+<option value="Presente">
+Presente
+</option>
+
+
+<option value="Ausente">
+Ausente
+</option>
+
+
+<option value="Licencia">
+Licencia
+</option>
+
+
+<option value="Permiso">
+Permiso
+</option>
+
+
+
+{% endif %}
+
+
+</select>
+
+
+</td>
+
+
+
+<td>
+
+
+<input
+
+type="time"
+
+name="entrada_{{ registro.trabajador.id }}"
+
+value="{% if registro.asistencia and registro.asistencia.hora_entrada %}{{ registro.asistencia.hora_entrada|time:'H:i' }}{% endif %}"
+
+>
+
+
+</td>
+
+
+
+<td>
+
+
+<input
+
+type="time"
+
+name="salida_{{ registro.trabajador.id }}"
+
+value="{% if registro.asistencia and registro.asistencia.hora_salida %}{{ registro.asistencia.hora_salida|time:'H:i' }}{% endif %}"
+
+>
+
+
+</td>
+
+
+
+<td>
+
+
+<input
+
+type="text"
+
+name="observacion_{{ registro.trabajador.id }}"
+
+value="{% if registro.asistencia %}{{ registro.asistencia.observacion }}{% endif %}"
+
+>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+{% empty %}
+
+
+<tr>
+
+<td colspan="8">
+
+No existen trabajadores programados.
+
+</td>
+
+</tr>
+
+
+{% endfor %}
+
+
+
+</tbody>
+
+
+</table>
+
+
+
+<br>
+
+
+<button type="submit">
+
+Guardar asistencia
+
+</button>
+
+
+
+</form>
+
+
+{% endif %}
+
+
+
+</body>
+
+</html>

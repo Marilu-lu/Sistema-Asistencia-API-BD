@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Planificación semanal</title>
+
+    <style>
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 30px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2f6f8f;
+            margin-bottom: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th {
+            background-color: #2f6f8f;
+            color: white;
+            padding: 12px;
+            border: 1px solid #ccc;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #dceef7;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<h1>
+    Planificación semanal
+</h1>
+
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Fecha</th>
+
+            <th>Trabajador</th>
+
+            <th>Cargo</th>
+
+            <th>Grupo</th>
+
+            <th>Turno</th>
+
+            <th>Hora inicio</th>
+
+            <th>Hora término</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+
+        {% for registro in programaciones %}
+
+        <tr>
+
+            <td>
+                {{ registro.fecha }}
+            </td>
+
+            <td>
+                {{ registro.trabajador.nombre }}
+            </td>
+
+            <td>
+                {{ registro.trabajador.cargo }}
+            </td>
+
+            <td>
+                {{ registro.trabajador.grupo }}
+            </td>
+
+            <td>
+                {{ registro.turno.codigo }}
+            </td>
+
+            <td>
+                {% if registro.horario %}
+                    {{ registro.horario.hora_inicio|time:"H:i" }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+
+            <td>
+                {% if registro.horario %}
+                    {{ registro.horario.hora_termino|time:"H:i" }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+
+        </tr>
+
+
+        {% empty %}
+
+        <tr>
+
+            <td colspan="7">
+                No existen programaciones registradas.
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+
+    </tbody>
+
+</table>
+
+
+</body>
+
+</html>
