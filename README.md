@@ -14,25 +14,25 @@ El sistema integra una interfaz web con una base de datos MariaDB y una API REST
 
 Desarrollar una solución Back End utilizando Django que permita:
 
-- Administrar trabajadores.
-- Administrar turnos.
-- Administrar horarios asociados a los turnos.
-- Crear y consultar programaciones.
-- Registrar la asistencia diaria.
-- Mantener un registro histórico de las asistencias.
-- Exponer la información mediante una API REST.
-- Persistir la información en una base de datos MariaDB.
+* Administrar trabajadores.
+* Administrar turnos.
+* Administrar horarios asociados a los turnos.
+* Crear y consultar programaciones.
+* Registrar la asistencia diaria.
+* Mantener un registro histórico de las asistencias.
+* Exponer la información mediante una API REST.
+* Persistir la información en una base de datos MariaDB.
 
 ## Tecnologías utilizadas
 
-- Python
-- Django
-- Django REST Framework
-- MariaDB
-- HTML
-- CSS
-- Git
-- GitHub
+* Python
+* Django
+* Django REST Framework
+* MariaDB
+* HTML
+* CSS
+* Git
+* GitHub
 
 ## Funcionalidades principales
 
@@ -40,12 +40,12 @@ Desarrollar una solución Back End utilizando Django que permita:
 
 Permite almacenar información de los trabajadores:
 
-- RUT
-- Nombre
-- Cargo
-- Estado
-- Grupo
-- Tipo de turno
+* RUT
+* Nombre
+* Cargo
+* Estado
+* Grupo
+* Tipo de turno
 
 ### Gestión de turnos
 
@@ -53,8 +53,8 @@ Permite administrar los turnos utilizados por la organización.
 
 Cada turno posee:
 
-- Código
-- Descripción
+* Código
+* Descripción
 
 ### Gestión de horarios
 
@@ -62,37 +62,37 @@ Permite asociar un horario a un turno según el día de la semana.
 
 Cada horario considera:
 
-- Turno
-- Día
-- Hora de inicio
-- Hora de término
+* Turno
+* Día
+* Hora de inicio
+* Hora de término
 
 ### Planificación
 
 Permite visualizar la programación de trabajadores considerando:
 
-- Fecha
-- Trabajador
-- Cargo
-- Grupo
-- Turno
-- Horario correspondiente
+* Fecha
+* Trabajador
+* Cargo
+* Grupo
+* Turno
+* Horario correspondiente
 
 ### Registro de asistencia
 
 Permite registrar:
 
-- Estado de asistencia
-- Hora de entrada
-- Hora de salida
-- Observaciones
+* Estado de asistencia
+* Hora de entrada
+* Hora de salida
+* Observaciones
 
 Los estados utilizados por el sistema pueden incluir:
 
-- Presente
-- Ausente
-- Licencia
-- Permiso
+* Presente
+* Ausente
+* Licencia
+* Permiso
 
 ### Registro histórico
 
@@ -100,12 +100,12 @@ El sistema genera o actualiza un registro histórico asociado al trabajador y a 
 
 El registro histórico conserva:
 
-- Nombre del trabajador
-- Fecha
-- Hora de entrada
-- Hora de salida
-- Estado
-- Observación
+* Nombre del trabajador
+* Fecha
+* Hora de entrada
+* Hora de salida
+* Estado
+* Observación
 
 ## API REST
 
@@ -134,10 +134,10 @@ Los recursos utilizan ViewSets y `DefaultRouter`.
 
 Se implementaron y probaron operaciones:
 
-- GET
-- POST
-- PATCH
-- DELETE
+* GET
+* POST
+* PATCH
+* DELETE
 
 También se verificaron las consultas individuales mediante identificador.
 
@@ -149,22 +149,22 @@ La aplicación utiliza la arquitectura MVT de Django.
 
 Define las estructuras de datos y relaciones entre:
 
-- Trabajadores
-- Turnos
-- Horarios
-- Programaciones
-- Asistencias
-- Registros históricos
+* Trabajadores
+* Turnos
+* Horarios
+* Programaciones
+* Asistencias
+* Registros históricos
 
 ### Views
 
 Gestiona:
 
-- La lógica de planificación.
-- El registro de asistencia.
-- La persistencia de los datos.
-- La generación y actualización del registro histórico.
-- Los ViewSets utilizados por la API REST.
+* La lógica de planificación.
+* El registro de asistencia.
+* La persistencia de los datos.
+* La generación y actualización del registro histórico.
+* Los ViewSets utilizados por la API REST.
 
 ### Serializers
 
@@ -174,8 +174,8 @@ Permiten transformar los modelos Django en representaciones JSON y validar los d
 
 Contienen las interfaces HTML utilizadas para:
 
-- Planificación semanal.
-- Registro de asistencia diaria.
+* Planificación semanal.
+* Registro de asistencia diaria.
 
 ### URLs
 
@@ -192,7 +192,7 @@ Debido a una incompatibilidad relacionada con la recuperación de columnas gener
 La configuración utiliza:
 
 ```python
-can_return_columns_from_insert = False
+can\_return\_columns\_from\_insert = False
 ```
 
 La conexión con MariaDB fue comprobada desde Django y se verificó el funcionamiento de las operaciones CRUD.
@@ -217,12 +217,12 @@ System check identified no issues (0 silenced).
 
 Se verificaron las operaciones CRUD de:
 
-- Trabajadores
-- Turnos
-- Horarios
-- Programaciones
-- Asistencias
-- Registro histórico
+* Trabajadores
+* Turnos
+* Horarios
+* Programaciones
+* Asistencias
+* Registro histórico
 
 También se verificaron las consultas individuales mediante identificador.
 
@@ -267,16 +267,16 @@ La IA fue utilizada como copiloto durante distintas etapas del desarrollo.
 
 La Inteligencia Artificial fue utilizada para:
 
-- Comprender conceptos relacionados con Django y Django REST Framework.
-- Orientar la estructura de modelos, vistas, serializers y rutas.
-- Apoyar la implementación de ViewSets y endpoints de la API REST.
-- Analizar mensajes de error generados durante la ejecución del proyecto.
-- Proponer soluciones frente a errores de configuración y programación.
-- Revisar estructuras de código Python.
-- Apoyar la integración entre la interfaz web y la base de datos.
-- Proponer y revisar pruebas de funcionamiento de la API.
-- Apoyar la documentación técnica del proyecto.
-- Orientar el uso de Git y GitHub.
+* Comprender conceptos relacionados con Django y Django REST Framework.
+* Orientar la estructura de modelos, vistas, serializers y rutas.
+* Apoyar la implementación de ViewSets y endpoints de la API REST.
+* Analizar mensajes de error generados durante la ejecución del proyecto.
+* Proponer soluciones frente a errores de configuración y programación.
+* Revisar estructuras de código Python.
+* Apoyar la integración entre la interfaz web y la base de datos.
+* Proponer y revisar pruebas de funcionamiento de la API.
+* Apoyar la documentación técnica del proyecto.
+* Orientar el uso de Git y GitHub.
 
 ### Auditoría y validación del código generado con IA
 
@@ -295,14 +295,14 @@ El proceso seguido fue:
 
 Durante este proceso se detectaron y solucionaron errores como:
 
-- ViewSets que no estaban registrados correctamente en el router.
-- Serializers faltantes o imports incorrectos.
-- Registro duplicado de un `basename`.
-- Problemas relacionados con las rutas de la API.
-- Problemas de compatibilidad entre Django y MariaDB.
-- Diferencias entre los identificadores utilizados durante las pruebas y los registros existentes en la base de datos.
-- Ausencia inicial de la generación automática del registro histórico.
-- Manejo incorrecto del valor `"None"` como texto en las observaciones.
+* ViewSets que no estaban registrados correctamente en el router.
+* Serializers faltantes o imports incorrectos.
+* Registro duplicado de un `basename`.
+* Problemas relacionados con las rutas de la API.
+* Problemas de compatibilidad entre Django y MariaDB.
+* Diferencias entre los identificadores utilizados durante las pruebas y los registros existentes en la base de datos.
+* Ausencia inicial de la generación automática del registro histórico.
+* Manejo incorrecto del valor `"None"` como texto en las observaciones.
 
 Estos casos fueron utilizados para revisar, modificar y validar las propuestas antes de considerar las soluciones como definitivas.
 
@@ -341,7 +341,7 @@ python -m venv .venv
 ### Activar el entorno virtual en Windows
 
 ```powershell
-.venv\Scripts\activate
+.venv\\Scripts\\activate
 ```
 
 ### Instalar las dependencias
@@ -380,19 +380,20 @@ Proyecto funcional y validado localmente.
 
 Se verificó:
 
-- Conexión con MariaDB.
-- Funcionamiento de Django.
-- Funcionamiento de Django REST Framework.
-- API REST.
-- Operaciones CRUD.
-- Planificación.
-- Registro de asistencia.
-- Generación del registro histórico.
-- Persistencia de datos.
-- Validación mediante `python manage.py check`.
+* Conexión con MariaDB.
+* Funcionamiento de Django.
+* Funcionamiento de Django REST Framework.
+* API REST.
+* Operaciones CRUD.
+* Planificación.
+* Registro de asistencia.
+* Generación del registro histórico.
+* Persistencia de datos.
+* Validación mediante `python manage.py check`.
 
 Resultado final:
 
 ```text
 System check identified no issues (0 silenced).
-```
+
+
