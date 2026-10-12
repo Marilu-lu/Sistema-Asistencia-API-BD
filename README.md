@@ -33,6 +33,7 @@ Desarrollar una solución Back End utilizando Django que permita:
 * CSS
 * Git
 * GitHub
+* JSON Web Token (JWT)
 
 ## Funcionalidades principales
 
@@ -130,16 +131,25 @@ El proyecto incorpora una API REST utilizando Django REST Framework.
 
 Los recursos utilizan ViewSets y `DefaultRouter`.
 
-### Operaciones CRUD
+### Operaciones HTTP
 
-Se implementaron y probaron operaciones:
+Los ViewSets permiten trabajar con operaciones HTTP estándar:
 
 * GET
 * POST
+* PUT
 * PATCH
 * DELETE
 
-También se verificaron las consultas individuales mediante identificador.
+Durante la validación funcional se probaron directamente las operaciones sobre el recurso `trabajadores`.
+
+Resultados obtenidos:
+
+```text
+GET     → 200 OK
+POST    → 201 Created
+PATCH   → 200 OK
+DELETE  → 204 No Content
 
 ## Arquitectura del proyecto
 
